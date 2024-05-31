@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react'
 import { createContext } from "react";
-import { Apicall } from '../Function/ApiCall';
+import { Apicall, SearchApi } from '../Function/ApiCall';
 import { useRouter } from 'next/navigation';
 
 
@@ -21,6 +21,7 @@ export default function GlobalProvider({ children }: { children: React.ReactNode
   const [Error, setError] = useState<any | null>(null)
   const [currentWeather, setCurrentWeather] = useState<null | any>(null)
   const [Forcast, setForcast] = useState<null | any>(null)
+  const [CityList, setCityList] = useState<null | any>(null)
 
   const HandelWeather = async (city: string) => {
     return route.push(`/weather/${city}`)
@@ -31,7 +32,7 @@ export default function GlobalProvider({ children }: { children: React.ReactNode
       // SET CURRENT WEATHER AND FORCAST TO NUJLL 
       setCurrentWeather(null);
       setForcast(null)
-
+      setCityList(null)
       // CALL API FUNCTION 
       const weatherData: any = await Apicall(city);
       console.log(weatherData);
@@ -55,8 +56,15 @@ export default function GlobalProvider({ children }: { children: React.ReactNode
   }
 
 
+  const handelOnChange = async (city:string) => {
+
+    const lis = await SearchApi(city)
+
+  }
+
+
   return (
-    <GlobalContext.Provider value={{ HandelWeather, currentWeather, Forcast, HadelParams, Error }}>
+    <GlobalContext.Provider value={{ HandelWeather, currentWeather, Forcast, HadelParams, Error,CityList,setCityList }}>
       {children}
     </GlobalContext.Provider>
   )

@@ -14,8 +14,8 @@ const BASE_URL = `https://api.openweathermap.org/data/2.5/`;
 const API_KEY = `7ac2d2618052cb3478289070ea362a16`
 export async function Apicall(city: string) {
   try {
-    const response1 = await axios.get(`${BASE_URL}weather?q=${city}&appid=${API_KEY}&units=metric`)
-    const response2 = await axios.get(`${BASE_URL}forecast?q=${city}&appid=${API_KEY}&units=metric`)
+    const response1 = await axios.get(`${BASE_URL}weather?q=${city.toLowerCase()}&appid=${API_KEY}&units=metric`)
+    const response2 = await axios.get(`${BASE_URL}forecast?q=${city.toLowerCase()}&appid=${API_KEY}&units=metric`)
     
        const data={
         curr:response1.data,
@@ -34,19 +34,21 @@ export async function Apicall(city: string) {
 const options = {
   method: 'GET',
   url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/cities',
-  params: {
-    namePrefix: 'bhadra'
-  },
   headers: {
-    // 'X-RapidAPI-Key': '00c70e864fmsh295e2826a1bb966p14cb30jsne12f4f59c15c',
-    'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
+    'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com',
+    'X-RapidAPI-Key': '00c70e864fmsh295e2826a1bb966p14cb30jsne12f4f59c15c' // Make sure to uncomment and use your actual API key
   }
 };
 
-export async function SearchApi() {
+export async function SearchApi(city: string) {
   try {
-    const response = await axios.request(options);
-    console.log(response.data);
+    const response = await axios.request({
+      ...options,
+      params: {
+        namePrefix: city
+      }
+    });
+    return response.data.data
   } catch (error) {
     console.error(error);
   }
