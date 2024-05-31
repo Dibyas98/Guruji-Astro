@@ -1,15 +1,18 @@
 import axios from "axios";
-const options = {
-    method: 'GET',
-    url: 'https://open-weather13.p.rapidapi.com/city/landon/EN',
-    headers: {
-      'X-RapidAPI-Key': '00c70e864fmsh295e2826a1bb966p14cb30jsne12f4f59c15c',
-      'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
-    }
-  };
+// const options = {
+//     method: 'GET',
+//     url: 'https://open-weather13.p.rapidapi.com/city/landon/EN',
+//     headers: {
+//       'X-RapidAPI-Key': '00c70e864fmsh295e2826a1bb966p14cb30jsne12f4f59c15c',
+//       'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
+//     }
+//   };
+
+const BASE_URL=`'https://api.openweathermap.org/data/2.5/weather?`;
+const API_KEY = `0be8a5357a95309d18d80f2a4ae77060`
 export async function Apicall(city:string) {
     try {
-        // const response = await axios.request(options)
+        // const response = await axios.get(`${BASE_URL}lat=21.0633&lon=86.5054&appid=${API_KEY}`)
         return response
         
     } catch (error) {
