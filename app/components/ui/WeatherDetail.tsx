@@ -4,7 +4,7 @@ import { currentDay } from '../Function/TodayDay'
 import Bar from './Bar'
 import WeatherFull from './WeatherFull'
 import WetherPercent from './WetherPercent'
-
+import { CloudRainWind,Cloudy  } from 'lucide-react';
 
 function WeatherDetail({current}:any):React.ReactNode {
 
@@ -26,21 +26,23 @@ function WeatherDetail({current}:any):React.ReactNode {
                     <div className='font-normal text-7xl flex w-full px-8 xl:px-0 justify-center items-center gap-8'>
                         <div className='flex'>
                             <h1>{current.main.temp}</h1>
-                            <h1 className='text-3xl'>°C</h1>
+                            <h1 className='text-3xl text-red-500'>°C</h1>
                         </div>
                         <div>
-                            <p className='text-2xl'>{day}</p>
+                            <p className='text-2xl text-green-700'>{day}</p>
+                            <h1 className='capitalize font-semibold text-sm'>{current.weather[0].description}</h1>
                         </div>
                     </div>
+                    
                     <div className='w-full px-3'>
                         <Bar style='h-[3px]'></Bar>
                     </div>
                     <div>
                         <WeatherFull detail={current.main} wind={current.wind}></WeatherFull>
                     </div>
-                    <div className='w-full flex px-10 flex-col'>
-                      <WetherPercent name='cloud' percent='80'></WetherPercent>
-                      <WetherPercent name='Rain' percent='1'></WetherPercent>
+                    <div className='w-full flex px-10 flex-col gap-2'>
+                     { current.clouds && <WetherPercent name='Cloud' percent={`${current.clouds.all} %`} icon={<Cloudy className='text-sky-600'/>}></WetherPercent>}
+                      {current.rain && <WetherPercent name='Rain' percent={`${current.rain.all} %`} icon={<CloudRainWind  className='text-sky-600'/>}></WetherPercent>}
                     </div>
                 </section>
             }

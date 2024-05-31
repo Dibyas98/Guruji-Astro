@@ -7,13 +7,11 @@ function WeatherFull({detail,wind}:any) {
         <div>
             <p>Feel Like</p>
             <p>Wind</p>
-            <p>Humidity</p>
             <p>Pressure</p>
         </div>
-        <div>
+        <div className='text-sky-400'>
             <p>{detail.feels_like} °C</p>
             <p>{wind.speed} m/s</p>
-            <p>{detail.humidity} %</p>
             <p>{detail.pressure} hPa</p>
         </div>
     </section> 

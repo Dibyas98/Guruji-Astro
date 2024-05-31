@@ -20,13 +20,18 @@ export default function GlobalProvider({ children }: { children: React.ReactNode
   const route = useRouter();
   const [Error, setError] = useState<any | null>(null)
   const [currentWeather, setCurrentWeather] = useState<null | any>(null)
+  const [Forcast, setForcast] = useState<null | any>(null)
 
   const HandelWeather = async (city: string) => {
     try {
       setCurrentWeather(null);
-      const weatherData = await Apicall(city);
-      setCurrentWeather(weatherData);
-      // return route.push(`/weather/${city}`)
+      setForcast(null)
+      const weatherData:any = await Apicall(city);
+      setCurrentWeather(weatherData.curr);
+      setForcast(weatherData.forcast)
+      return route.push(`/weather/${city}`)
+      // setCurrentWeather(weatherData)
+
 
     } catch (error) {
 
@@ -41,7 +46,7 @@ export default function GlobalProvider({ children }: { children: React.ReactNode
   }
 
   return (
-    <GlobalContext.Provider value={{ HandelWeather, currentWeather, pri }}>
+    <GlobalContext.Provider value={{ HandelWeather, currentWeather,Forcast }}>
       {children}
     </GlobalContext.Provider>
   )

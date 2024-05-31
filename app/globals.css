@@ -2,3 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+.back{
+    background-image: url('./components/assects/back.PNG');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

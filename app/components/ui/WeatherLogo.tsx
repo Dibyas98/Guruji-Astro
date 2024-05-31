@@ -1,6 +1,7 @@
 import React from 'react'
 import icon01d from '../assects/weather-icons/icon01d.png'
 import icon01n from '../assects/weather-icons/icon01n.png'
+import icon02n from '../assects/weather-icons/icon02n.png'
 import icon02d from '../assects/weather-icons/icon02d.png'
 import icon03d from '../assects/weather-icons/icon03d.png'
 import icon03n from '../assects/weather-icons/icon03n.png'
@@ -19,15 +20,15 @@ import icon50n from '../assects/weather-icons/icon50n.png'
 import unknown from '../assects/weather-icons/unknown.png'
 import Image from 'next/image'
 
-function WeatherLogo({icon}:any):React.ReactNode {
-  console.log(icon);
+function WeatherLogo({icon,wid,hig}:any):React.ReactNode {
   
   return (
     <section className='w-full h-fit  flex justify-center items-center  p-5 '>
         <div className='bg-[#dcdcdca6] rounded-xl'>
-        {icon == '01d' && <Image src={icon01d} alt='' width='200' height='100'></Image>}
+        {icon == '01d' && <Image src={icon01d} alt='' width={wid} height={hig}></Image>}
         {icon == '01n' && <Image src={icon01n} alt='' width='200' height='100'></Image>}
         {icon == '02d' && <Image src={icon02d} alt='' width='200' height='100'></Image>}
+        {icon == '02n' && <Image src={icon02n} alt='' width='200' height='100'></Image>}
         {icon == '03d' && <Image src={icon03d} alt='' width='200' height='100'></Image>}
         {icon == '03n' && <Image src={icon03n} alt='' width='200' height='100'></Image>}
         {icon == '04d' && <Image src={icon04d} alt='' width='200' height='100'></Image>}

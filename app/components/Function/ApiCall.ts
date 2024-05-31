@@ -1,4 +1,5 @@
 import axios from "axios";
+import { error } from "console";
 // const options = {
 //     method: 'GET',
 //     url: 'https://open-weather13.p.rapidapi.com/city/landon/EN',
@@ -12,10 +13,14 @@ const BASE_URL = `https://api.openweathermap.org/data/2.5/`;
 const API_KEY = `7ac2d2618052cb3478289070ea362a16`
 export async function Apicall(city: string) {
   try {
-    // const response = await axios.get(`${BASE_URL}weather?lat=21.0633&lon=86.5054&appid=${API_KEY}&units=metric`)
-    // console.log(response.data);
-
-    return response
+    const response1 = await axios.get(`${BASE_URL}weather?q=${city}&appid=${API_KEY}&units=metric`)
+    const response2 = await axios.get(`${BASE_URL}forecast?q=${city}&appid=${API_KEY}&units=metric`)
+    
+       const data={
+        curr:response1.data,
+        forcast:response2.data
+      }
+   return data
 
   } catch (error) {
     console.log(error);
@@ -45,47 +50,3 @@ export async function SearchApi() {
   }
 }
 
-const response = {
-  "coord": {
-    "lon": 86.5054,
-    "lat": 21.0633
-  },
-  "weather": [
-    {
-      "id": 803,
-      "main": "Clouds",
-      "description": "broken clouds",
-      "icon": "04d"
-    }
-  ],
-  "base": "stations",
-  "main": {
-    "temp": 36.44,
-    "feels_like": 43.44,
-    "temp_min": 36.44,
-    "temp_max": 36.44,
-    "pressure": 1003,
-    "humidity": 50,
-    "sea_level": 1003,
-    "grnd_level": 1001
-  },
-  "visibility": 10000,
-  "wind": {
-    "speed": 6.07,
-    "deg": 203,
-    "gust": 6.66
-  },
-  "clouds": {
-    "all": 81
-  },
-  "dt": 1717132594,
-  "sys": {
-    "country": "IN",
-    "sunrise": 1717111935,
-    "sunset": 1717159887
-  },
-  "timezone": 19800,
-  "id": 1276325,
-  "name": "Bhadrakh",
-  "cod": 200
-}
