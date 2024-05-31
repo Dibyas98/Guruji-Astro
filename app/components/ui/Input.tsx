@@ -21,6 +21,6 @@ export default function Input({ type, style, placeholder, value, setCity }: prop
 
     
     return (
-        <input type={type} className={`border-2 w-full h-full rounded-sm  focus:outline-none p-1 ${style}`} placeholder={placeholder ? placeholder : ''} value={value ? value : ''} onChange={(event: any) => HandelInput(event)} />
+        <input type={type} className={`border-2 w-full h-full rounded-sm  focus:outline-none p-1 ${style}`} placeholder={placeholder ? placeholder : ''} onChange={(event: any) => HandelInput(event)} value={value? value:''}/>
     )
 }
