@@ -9,6 +9,7 @@ import { error } from "console";
 //     }
 //   };
 
+
 const BASE_URL = `https://api.openweathermap.org/data/2.5/`;
 const API_KEY = `7ac2d2618052cb3478289070ea362a16`
 export async function Apicall(city: string) {
@@ -22,8 +23,9 @@ export async function Apicall(city: string) {
       }
    return data
 
+
   } catch (error) {
-    console.log(error);
+    return error
 
   }
 }

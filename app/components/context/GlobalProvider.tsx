@@ -23,30 +23,40 @@ export default function GlobalProvider({ children }: { children: React.ReactNode
   const [Forcast, setForcast] = useState<null | any>(null)
 
   const HandelWeather = async (city: string) => {
+    return route.push(`/weather/${city}`)
+
+  }
+  const HadelParams = async (city: string) => {
     try {
+      // SET CURRENT WEATHER AND FORCAST TO NUJLL 
       setCurrentWeather(null);
       setForcast(null)
-      const weatherData:any = await Apicall(city);
-      setCurrentWeather(weatherData.curr);
-      setForcast(weatherData.forcast)
-      return route.push(`/weather/${city}`)
-      // setCurrentWeather(weatherData)
+
+      // CALL API FUNCTION 
+      const weatherData: any = await Apicall(city);
+      console.log(weatherData);
+      if (weatherData.curr) {
+        setCurrentWeather(weatherData.curr);
+        setForcast(weatherData.forcast.list.splice(0, 7))
+        setError(null)
+      }
+      if (weatherData.response.status == 404) {
+        setError(weatherData.response.data.message)
+        route.push('/')
+      }
 
 
-    } catch (error) {
 
-      setError(error)
+    } catch (error: any) {
+      //  SET ERROR 
+
+
     }
-
-
   }
-  const pri = (arg:string)=>{
-    console.log(arg);
-    
-  }
+
 
   return (
-    <GlobalContext.Provider value={{ HandelWeather, currentWeather,Forcast }}>
+    <GlobalContext.Provider value={{ HandelWeather, currentWeather, Forcast, HadelParams, Error }}>
       {children}
     </GlobalContext.Provider>
   )

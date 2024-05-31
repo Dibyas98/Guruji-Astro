@@ -36,7 +36,7 @@ function Weather(): React.ReactNode {
         HandelWeather(city)
 
     }
-
+ 
 
 
 
@@ -69,8 +69,8 @@ function Weather(): React.ReactNode {
                         <h1 className='font-bold text-xl'>Highlights</h1>
                         <div className='w-full h-42 xl:h-60 flex gap-5 md:gap-3 md:justify-center xl:justify-center p-2 overflow-scroll xl:overflow-hidden '>
                             {
-                                Forcast && Forcast.list.splice(0, 7).map((ele: any, idx: number) => {
-                                    return <ForCastCard data={ele} day={forecastDays[idx]}></ForCastCard>
+                                Forcast && Forcast.map((ele: any, idx: number) => {
+                                    return <ForCastCard key={idx} data={ele} day={forecastDays[idx]}></ForCastCard>
                                 })
                             }
 
