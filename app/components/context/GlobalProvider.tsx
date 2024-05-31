@@ -22,6 +22,7 @@ export default function GlobalProvider({ children }: { children: React.ReactNode
   const [currentWeather, setCurrentWeather] = useState<null | any>(null)
   const [Forcast, setForcast] = useState<null | any>(null)
   const [CityList, setCityList] = useState<null | any>(null)
+  const [load,setload] = useState<boolean>(false)
 
   const HandelWeather = async (city: string) => {
     return route.push(`/weather/${city}`)
@@ -33,6 +34,7 @@ export default function GlobalProvider({ children }: { children: React.ReactNode
       setCurrentWeather(null);
       setForcast(null)
       setCityList(null)
+      setload(true)
       // CALL API FUNCTION 
       const weatherData: any = await Apicall(city);
       console.log(weatherData);
@@ -40,9 +42,11 @@ export default function GlobalProvider({ children }: { children: React.ReactNode
         setCurrentWeather(weatherData.curr);
         setForcast(weatherData.forcast.list.splice(0, 7))
         setError(null)
+        setload(false)
       }
       if (weatherData.response.status == 404) {
         setError(weatherData.response.data.message)
+        setload(false)
         route.push('/')
       }
 
@@ -64,7 +68,7 @@ export default function GlobalProvider({ children }: { children: React.ReactNode
 
 
   return (
-    <GlobalContext.Provider value={{ HandelWeather, currentWeather, Forcast, HadelParams, Error,CityList,setCityList }}>
+    <GlobalContext.Provider value={{ HandelWeather, currentWeather, Forcast, HadelParams, Error,CityList,setCityList,load }}>
       {children}
     </GlobalContext.Provider>
   )
