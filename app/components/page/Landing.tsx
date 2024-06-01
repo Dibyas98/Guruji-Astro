@@ -13,6 +13,8 @@ function Landing() {
 
   const handleClick = useCallback((arg: string) => {
     // CONDITION TO CHECK THE INPUT VALUE
+    console.log(arg);
+    
     if (!city.trim()) return
 
     // CALL FUNCTION TO GET API DATA
@@ -28,6 +30,7 @@ function Landing() {
     const handelOnChange = async () => {
 
       const lis = await SearchApi(city)
+      setCityList(lis)
     }
     handelOnChange()
   }, [city])

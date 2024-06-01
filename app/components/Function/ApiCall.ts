@@ -11,7 +11,7 @@ import { error } from "console";
 
 
 const BASE_URL = `https://api.openweathermap.org/data/2.5/`;
-const API_KEY = `0be8a5357a95309d18d80f2a4ae77060`
+const API_KEY = `7ac2d2618052cb3478289070ea362a16`
 export async function Apicall(city: string) {
   try {
     const response1 = await axios.get(`${BASE_URL}weather?q=${city.toLowerCase()}&appid=${API_KEY}&units=metric`)

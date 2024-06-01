@@ -37,6 +37,8 @@ export default function GlobalProvider({ children }: { children: React.ReactNode
       setload(true)
       // CALL API FUNCTION 
       const weatherData: any = await Apicall(city);
+      console.log(weatherData);
+      
       if (weatherData.curr) {
         setCurrentWeather(weatherData.curr);
         setForcast(weatherData.forcast.list.splice(0, 7))
