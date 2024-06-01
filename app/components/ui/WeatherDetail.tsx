@@ -23,7 +23,7 @@ function WeatherDetail({current}:any):React.ReactNode {
                 // IF DAY LENGTH IS GREATER THAN ZERO THE RENDER 
                 
                 day.length > 0 && <section className='max-w-full max-h-full flex flex-col items-center justify-center gap-5'>
-                    <div className='font-normal text-7xl flex w-full px-8 xl:px-0 justify-center items-center gap-8'>
+                    <div className='font-normal text-7xl flex flex-col sm:flex-row md:flex-row xl:flex-row w-full px-8 xl:px-0 justify-center items-center gap-8'>
                         <div className='flex'>
                             <h1>{current.main.temp}</h1>
                             <h1 className='text-3xl text-red-500'>°C</h1>

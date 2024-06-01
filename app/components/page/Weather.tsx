@@ -113,14 +113,14 @@ function Weather({place}:any): React.ReactNode {
                     </div>
                     <div className='w-full flex flex-col gap-5'>
                         <h1 className='font-bold text-xl '>Today's Highlights</h1>
-                        <div className='w-full bg-sault-400 flex xl:gap-10 md:flex-row xl:flex-row flex-wrap md:flex-nowrap xl:flex-nowrap gap-3 '>
+                        <div className='w-full bg-sault-400 flex xl:gap-10 justify-between md:flex-row xl:flex-row flex-wrap md:flex-nowrap xl:flex-nowrap gap-3 '>
                             <div className='bg-white w-full md:w-4/12 xl:w-4/12  rounded-lg'>
                                 <SunTime time={currentWeather.sys}></SunTime>
                             </div>
-                            <div className='bg-white w-1/2 md:w-4/12 xl:w-4/12 rounded-lg '>
+                            <div className='bg-white w-full sm:w-2/6 md:w-4/12 xl:w-4/12 rounded-lg '>
                                 <Humidity val={currentWeather.main.humidity}></Humidity>
                             </div>
-                            <div className='bg-white md:w-4/12 xl:w-4/12 rounded-lg'>
+                            <div className='bg-white w-full sm:w-3/5 md:w-4/12 xl:w-4/12 rounded-lg'>
                                 <MinMaxTemp temp={currentWeather.main}></MinMaxTemp>
                             </div>
                         </div>
