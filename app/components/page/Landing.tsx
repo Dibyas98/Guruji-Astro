@@ -31,7 +31,7 @@ function Landing() {
       setCityList(lis)
     }
     handelOnChange()
-  }, [city])
+  }, [city,setCityList])
  
   return (
     <div className="p-2 md:p-5 xl:p-5  bg-[#c7d1cda3] h-screen xl:h-full flex  back flex-col items-center gap-5">
