@@ -9,14 +9,14 @@ function MinMaxTemp({temp}:any):React.ReactNode {
                     <ChevronsUp></ChevronsUp>
                     <Thermometer></Thermometer>
                 </div>
-                <p>{temp.temp_max}</p>
+                <p className='text-sky-400'>{temp.temp_max} °C</p>
             </div>
             <div className='flex xl:gap-7'>
                 <div className='flex'>
                     <ChevronsDown></ChevronsDown>
                     <Thermometer></Thermometer>
                 </div>
-                <p>{temp.temp_min}</p>
+                <p className='text-sky-400'>{temp.temp_min} °C</p>
             </div>
         </div>
     )

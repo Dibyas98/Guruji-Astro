@@ -15,6 +15,8 @@ import { SearchApi } from '../Function/ApiCall';
 const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 function Weather({place}:any): React.ReactNode {
+
+    // TO GET DAY NAME IN FORCAST
     const dayInAWeek = new Date().getDay();
     const forecastDays = WEEK_DAYS.slice(dayInAWeek, WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, dayInAWeek));
 
@@ -48,6 +50,7 @@ function Weather({place}:any): React.ReactNode {
     
       }
 
+    //   CALL FUNC WHEN CITY CHANGES 
       useEffect(() => {
         const handelOnChange = async () => {
     
@@ -58,8 +61,6 @@ function Weather({place}:any): React.ReactNode {
         }
         handelOnChange()
       }, [city])
-
-      console.log(city);
       
 
     return (
@@ -67,13 +68,16 @@ function Weather({place}:any): React.ReactNode {
             <div className='w-full xl:w-4/12 py-2 bg-white rounded-t-xl xl:rounded-r-none xl:rounded-l-xl'>
                 <form action="" className='w-full px-5 md:px-28' onSubmit={HandelFormSubmit}>
                     <div className='w-full h-full relative '>
-                        <div className='w-f'>
+                        <div className='w-full'>
                             <Input type='text' style={'rounded-l pl-7'} placeholder='Search for places...' value={city} setCity={setCity} ></Input>
-                            <ul className='px-1 fixed w-64 flex flex-col items-center pt-1'>
+                            <div className='px-2'>
+                            <ul className='px-1 fixed w-64 flex flex-col items-center pt-1 bg-white border-x-2 rounded-b-lg'>
                                 {
-                                    CityList && city && CityList.map((ele: any, idx: number) => <List data={ele} func={handelClick}></List>)
+                                    CityList && city && CityList.map((ele: any, idx: number) => <List key={idx} data={ele} func={handelClick}></List>)
                                 }
                             </ul>
+                                </div>
+                                
                         </div>
                         <div className='absolute  top-0 py-1 h-full left-2 '>
                             <Search className='' style={{ width: '60%' }} />

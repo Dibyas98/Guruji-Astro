@@ -18,5 +18,4 @@ export function convertToIST(unixTimestamp:number) {
   const sunriseTimestamp = 1717159887;
   export const sunriseIST = convertToIST(sunriseTimestamp);
   
-  console.log(sunriseIST); // Output in IST
   

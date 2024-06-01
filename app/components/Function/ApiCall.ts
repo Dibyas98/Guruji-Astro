@@ -42,15 +42,19 @@ const options = {
 
 export async function SearchApi(city: string) {
   try {
-    const response = await axios.request({
-      ...options,
-      params: {
-        namePrefix: city
-      }
-    });
-    return response.data.data
+    if(city){
+
+      const response = await axios.request({
+        ...options,
+        params: {
+          namePrefix: city
+        }
+      });
+      return response.data.data
+    }
   } catch (error) {
-    console.error(error);
+    console.log(error);
+    
   }
 }
 
