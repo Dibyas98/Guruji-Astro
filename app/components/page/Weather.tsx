@@ -71,11 +71,11 @@ function Weather({place}:any): React.ReactNode {
                         <div className='w-full'>
                             <Input type='text' style={'rounded-l pl-7'} placeholder='Search for places...' value={city} setCity={setCity} ></Input>
                             <div className='px-2'>
-                            <ul className='px-1 fixed w-64 flex flex-col items-center pt-1 bg-white border-x-2 rounded-b-lg'>
+                            {CityList && city && <ul className='px-1 fixed w-64 flex flex-col items-center pt-1 bg-white border-x-2 rounded-b-lg'>
                                 {
-                                    CityList && city && CityList.map((ele: any, idx: number) => <List key={idx} data={ele} func={handelClick}></List>)
+                                     CityList.map((ele: any, idx: number) => <List key={idx} data={ele} func={handelClick}></List>)
                                 }
-                            </ul>
+                            </ul>}
                                 </div>
                                 
                         </div>
@@ -117,7 +117,7 @@ function Weather({place}:any): React.ReactNode {
                             <div className='bg-white w-full md:w-4/12 xl:w-4/12  rounded-lg'>
                                 <SunTime time={currentWeather.sys}></SunTime>
                             </div>
-                            <div className='bg-white w-1/2 md:w-4/12 xl:w-4/12 rounded-lg'>
+                            <div className='bg-white w-1/2 md:w-4/12 xl:w-4/12 rounded-lg '>
                                 <Humidity val={currentWeather.main.humidity}></Humidity>
                             </div>
                             <div className='bg-white md:w-4/12 xl:w-4/12 rounded-lg'>

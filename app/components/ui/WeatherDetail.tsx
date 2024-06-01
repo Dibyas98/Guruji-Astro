@@ -28,7 +28,7 @@ function WeatherDetail({current}:any):React.ReactNode {
                             <h1>{current.main.temp}</h1>
                             <h1 className='text-3xl text-red-500'>°C</h1>
                         </div>
-                        <div>
+                        <div className='flex flex-col'>
                             <p className='text-2xl text-green-700'>{day}</p>
                             <h1 className='capitalize font-semibold text-sm'>{current.weather[0].description}</h1>
                         </div>
@@ -40,7 +40,7 @@ function WeatherDetail({current}:any):React.ReactNode {
                     <div>
                         <WeatherFull detail={current.main} wind={current.wind}></WeatherFull>
                     </div>
-                    <div className='w-full flex px-10 flex-col gap-2'>
+                    <div className='w-full flex px-10 flex-col gap-2 items-center xl:items-start'>
                      { current.clouds && <WetherPercent name='Cloud' percent={`${current.clouds.all} %`} icon={<Cloudy className='text-sky-600'/>}></WetherPercent>}
                       {current.rain && <WetherPercent name='Rain' percent={`${current.rain.all} %`} icon={<CloudRainWind  className='text-sky-600'/>}></WetherPercent>}
                     </div>
